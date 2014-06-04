@@ -1,0 +1,27 @@
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+div {
+  padding: 5px;
+}
+
+h1 {
+  font-family: Ariel, sans-serif;
+  padding: 0px;
+  margin-top: 0px;
+}
+
+h2 {
+ font-family: Ariel, sans-serif;
+}
+
+p {
+  font-family: Ariel, sans-serif;
+}
+
+span {
+  font-size: 0.75em;
+}
