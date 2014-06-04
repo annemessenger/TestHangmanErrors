@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Count Hangman Errors</title>
+  <link rel="stylesheet" href="hangman.css">
+    <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body>
+
+<div>
+  <h2>Two Ways to Count Hangman Errors</h2>
+</div>
+
+<div id="canvas">
+<canvas id="myCanvas" width="130" height="200" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+<canvas id="myCanvas2" width="150" height="160" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+</div>
+<div>
+  <p>
+    Errors: 
+    <button type="button" id="test">0</button>&nbsp;
+    <span>&nbsp;&nbsp;Click to increment (rolls over after 10).</span>
+  </p>
+</div>
+
+<script>
+
+var c = document.getElementById("myCanvas");
+var ctx1 = c.getContext("2d");
+c = document.getElementById("myCanvas2");
+var ctx2 = c.getContext("2d");
+
+ctx1.font = "15px Arial";
+ctx1.strokeText("Errors made",5,195);
+ctx2.font = "15px Arial";
+ctx2.strokeText("Errors available",5,155);
+
+var numberErrors = 0;
+var maximumErrors = 10;
+makeCircles(ctx2);
+
+$('#test').click(function() {
+
+  if (numberErrors === maximumErrors) {
+    numberErrors = 0;
+    ctx1.clearRect(0,0,205,180);
+    ctx1.beginPath();
+    makeCircles(ctx2);
+  } 
+  else {
+    numberErrors++;
+    addLine(ctx1, numberErrors);
+    $('#test').html(numberErrors);
+    removeCircle(ctx2, numberErrors);
+  }
+  $('#test').html(numberErrors);
+});
+
+</script>
+
+</body>
+</html>
